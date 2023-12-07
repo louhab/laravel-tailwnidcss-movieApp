@@ -9,7 +9,7 @@ use App\Models\User ;
 
 
 Route::get('/' , [MoviesController::class , 'index'])->name('movies.index');
-Route::get('/movies/{movie}' , [MoviesController::class , 'show'])->name('movies.show');
+Route::get('/movie/{movie}' , [MoviesController::class , 'show'])->name('movie.show');
 
 
 Route::get('/erreur' , function(){
