@@ -1,7 +1,25 @@
 <?php
 
+use App\Http\Controllers\MoviesController;
 use Illuminate\Support\Facades\Route;
+use App\Models\User ;
 
 
-Route::view('/' , 'index');
-Route::view('/movie' , 'show');
+
+
+
+Route::get('/' , [MoviesController::class , 'index'])->name('movies.index');
+Route::get('/movies/{movie}' , [MoviesController::class , 'show'])->name('movies.show');
+
+
+Route::get('/erreur' , function(){
+    // on peut aussi utiliser la méthode
+    // firstOrFaild() ;  qui renvoie aussi
+    // la page 404 :
+    $user = User::find(1);
+    // 1 er façon :
+    if(!$user) abort(404);
+    // 2 éme  façon :
+    // if(!$user) if_abort(404);
+    else return $user ;
+});
